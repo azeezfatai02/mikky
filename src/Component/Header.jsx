@@ -5,13 +5,22 @@ import "./Header.css";
 import { useEffect, useState } from "react";
 import { auth } from "@/app/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { UserPlus } from "lucide-react";
-import IsAuthenticated from "@/IsAuthenticated";
+import { ShoppingCart, UserPlus } from "lucide-react";
+import useIsAuthenticated from "@/IsAuthenticated";
+import { signOut } from "firebase/auth";
 
 export default function Header() {
   const pathname = usePathname();
   //  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isLoggedIn = IsAuthenticated();
+  const user = useIsAuthenticated();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
 
   // useEffect(() => {
   //   const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -41,7 +50,7 @@ export default function Header() {
         <h1>MNE</h1>
       </div>
       <div>
-        {isLoggedIn ? (
+        {!user ? (
           <button className="login-button">
             <Link href="/login" className="login-link">
               <UserPlus className="login-icon" />
@@ -50,13 +59,17 @@ export default function Header() {
           </button>
         ) : (
           <div className="icons">
-            <Link href="/profile">
-              <img src="/uiw_user.png" alt="User Icon" />
+            <Link href="/Cart">
+              <ShoppingCart />
             </Link>
 
-            <Link href="/Cart">
-              <img src="/teenyicon.png" alt="Cart Icon" />
+            <Link href="/profile">
+              <UserPlus />
             </Link>
+
+            <button className="login-button" onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         )}
       </div>
