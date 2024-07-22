@@ -27,7 +27,8 @@ const auth = getAuth(app);
 const signin = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
+const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
 const storage = getStorage(app);
 const db = getFirestore(app);
 export { auth, db, storage, analytics, signin };
