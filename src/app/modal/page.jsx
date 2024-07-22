@@ -1,7 +1,12 @@
+import { SideBar } from "@/Component/SideBar";
 import React from "react";
 
 const Modal = () => {
-  return <div>Modal</div>;
+  return (
+    <div>
+      <SideBar />
+    </div>
+  );
 };
 
 export default Modal;

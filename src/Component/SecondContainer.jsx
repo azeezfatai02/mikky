@@ -4,6 +4,8 @@ import { PRODUCTS } from "../app/Data";
 import Link from "next/link";
 import Modal from "./Modal";
 import { useState } from "react";
+import "./SecondContainer.css";
+
 export default function SecondContainer() {
   // const [openModal, setOpenModal] = useState(false);
   return (
@@ -18,12 +20,10 @@ export default function SecondContainer() {
         </div>
 
         <div className="prods">
-          {PRODUCTS.map((item) => (
+          {PRODUCTS.map((item, i) => (
             <ProductInfo
-              // onClick={() => {
-              //   setOpenModal(true);
-              //   console.log("open me");
-              // }}
+              key={i}
+              id={item.id}
               images={item.image}
               title={item.title}
               price={item.price}

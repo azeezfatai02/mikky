@@ -2,7 +2,9 @@
 import React from "react";
 import { useState } from "react";
 import Modal from "./Modal";
+
 export default function ProductsInfo({
+  id,
   images,
   alt,
   price,
@@ -10,25 +12,19 @@ export default function ProductsInfo({
   description,
 }) {
   const [openModal, setOpenModal] = useState(false);
-  // const openModalHandler = () => {
-  //   setOpenModal(true);
-  //   console.log("openmodal", openModal);
-  // };
-  // const closeModalHandler = () => {
-  //   const inverseModelState = !openModal;
-  //   setOpenModal(inverseModelState);
-  //   console.log("closemdal", openModal);
-  // };
 
   const toogleModel = () => {
-    setOpenModal((prev) => !prev);
-    console.log("toogle", openModal);
+    setOpenModal(true);
   };
-  console.log("openmodal state", openModal);
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <>
       {openModal && (
         <Modal
+          id={id}
           className="modal"
           images={images}
           alt={alt}
@@ -36,10 +32,11 @@ export default function ProductsInfo({
           title={title}
           description={description}
           toogleModel={toogleModel}
+          handleCloseModal={handleCloseModal}
         />
       )}
       <div className="product-info">
-        <div onClick={toogleModel}>
+        <div onClick={toogleModel} className="for-product-info">
           <img src={images} alt={alt} />
           <h3>{title}</h3>
           <p>{price}</p>

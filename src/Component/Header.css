@@ -1,0 +1,79 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .link{
+    margin: 0 10px;
+    /* color: #ffffff; */
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  
+  .nav-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .link {
+    text-decoration: none;
+    /* color: #333; */
+    padding: 5px 10px;
+  }
+  
+  .link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0070f3;
+  }
+  
+  .brand h1 {
+    margin: 0;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .icons img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .login-button {
+    background-color: #0070f3;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  
+  .login-button:hover {
+    background-color: #005bb5;
+  }
+  
+  .login-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-icon {
+    margin-right: 8px;
+  }
+  

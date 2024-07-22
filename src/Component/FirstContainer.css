@@ -1,0 +1,68 @@
+
+.theContainer{
+  /* background-color: #151F1E; */
+  background-image: url(../../public/car-background.jpg);
+  /* background-repeat: no-repeat; */
+  background-size: 100%;
+  /* position: relative; */
+}
+
+.firstcont{
+  display: flex;
+  justify-content: space-between;
+  max-width: 1146px;
+  margin: auto;
+}
+img{
+  /* max-width: 100%; */
+  display: block;
+  height: auto;
+  max-width: 1146px;
+}
+.middlealfa{
+  display: flex;
+  flex-direction: column;
+  color: rgb(124, 78, 78);
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 5%;
+  margin-right: 5%; */
+  font-family: 'Poppins', sans-serif;
+  height: 500px;
+  width: 100%;
+  font-size: 35px;
+  top: 3%;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+    .fsetimg {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .hero_img img {
+      width: 80px;
+    }
+  
+    .middlealfa h1 {
+      font-size: 2em;
+    }
+  
+    .middlealfa h3 {
+      font-size: 1.2em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero_img img {
+      width: 60px;
+    }
+  
+    .middlealfa h1 {
+      font-size: 1.8em;
+    }
+  
+    .middlealfa h3 {
+      font-size: 1em;
+    }
+  }

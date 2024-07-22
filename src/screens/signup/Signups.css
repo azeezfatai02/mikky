@@ -1,0 +1,50 @@
+
+h1{
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 3%;
+}
+form{
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+    flex-direction: column;
+}
+.for-names{
+    display: flex;
+    justify-content: space-between;
+}
+.joinname{
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+input{
+    height: 35px;
+    /* border: none; */
+    background-color: #131311;
+    border-bottom: 1px bold #ffffff;
+    color: #ffffff;
+}
+.joinother{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin-top: 2%;
+    width:25% ;
+    background-color: blue;
+    color: #ffffff;
+    height: 35px;
+}
+a{
+    color: blue;
+}
