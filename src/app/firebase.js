@@ -38,7 +38,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -58,7 +58,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const analytics = typeof window !== "undefined" ? getAnalytics(app) : null; // Check if window is defined before calling getAnalytics
+// const analytics = typeof window !== "undefined" ? getAnalytics(app) : null; // Check if window is defined before calling getAnalytics
 
 // Authentication function
 const signin = (email, password) => {
@@ -66,4 +66,4 @@ const signin = (email, password) => {
 };
 
 // Export the services and functions
-export { auth, db, storage, analytics, signin };
+export { auth, db, storage, signin };
