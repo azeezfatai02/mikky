@@ -14,7 +14,7 @@ export default function SecondContainer() {
         <div className="pro">
           <h2>OUR PRODUCT</h2>
 
-          <Link href="/modal" className="seelink">
+          <Link href="/back-end/dashboard" className="seelink">
             see all
           </Link>
         </div>

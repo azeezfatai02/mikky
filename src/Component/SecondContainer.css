@@ -37,27 +37,13 @@
     text-decoration: none;
     cursor: pointer;
   }
-  /* .seelink{
-    color: green;
-  } */
-  /* a:hover{
-    color: green;
-    text-decoration: underline;
-  }
-  .active{
-    color: green;
-    border-bottom: 1px solid green;
-  } */
+  
   
   .seelink:hover {
     text-decoration: underline;
   }
   
-  /* .prods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-  } */
+  
   .prods{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -1,0 +1,61 @@
+.ProductPage{
+    /* margin-left: ; */
+    margin-right: 10px;
+    color: black;
+    background-color: white;
+}
+li{
+    list-style: none;
+    padding: "10px";
+    /* border-bottom: "1px solid #ccc"; */
+    color: "black";   
+}
+table{
+    width: "100%";
+    border-collapse: collapse;
+    color: black;
+}
+th{
+    /* background-color: "black"; */
+    color: "white";
+    padding: "10px";
+    border: "1px solid black"
+}
+.manage{
+    background-color: #F7F6F6;
+    
+}
+.manage-h1{
+    color: "black";
+    margin-bottom: "20px";
+    margin-top: "10px";
+    font-size: "20px";
+    font-weight: "bold";
+    text-align: "center";
+    font-weight: "bold";
+    padding-top: 5px;
+    border-bottom: "1px solid black";
+}
+td{
+    padding: "10px";
+    border: "1px solid #ccc";
+    color: "white";
+}
+.ProductPage input{
+    width: "150px";
+    padding: "5px";
+    border: "1px solid #ccc";
+    border-radius: "5px";
+}
+.search-div{
+    position: relative;
+    margin-bottom: 10px;
+}
+.search{
+    position: absolute;
+    left: 270px;
+    top: 40%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
