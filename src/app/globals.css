@@ -192,7 +192,7 @@ footer{
   height: 60%;
 }
 .modalbutton{
-  width: 100%;
+  width: 50%;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -201,9 +201,30 @@ footer{
   background-color: #2F6A56;
   border-radius: 5px;
   color: #ffffff;
+  margin-bottom: 20px;
+}
+.modalbutton2{
+  /* width: 50%; */
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  background-color: #2F6A56;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 5px;
 }
 .modalcont{
   width: 100%;
+}
+.gotocart{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.modalcont h1,h2{
+  margin-bottom: 20px;
 }
 .modal img{
   width: 100%;

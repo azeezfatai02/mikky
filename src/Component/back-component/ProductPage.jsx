@@ -50,9 +50,7 @@ function ProductPage() {
       <div className="manage-h1">
         <h1 style={{ color: "black" }}>Manage Product</h1>
       </div>
-      {/* <Dropdown options={categories} onOptionSelect={setSelectedCategory} /> */}
       <div className="manage">
-        {/* <hr /> */}
         <h2>{selectedCategory || "All Products"}</h2>
         <div className="search-div">
           <input
@@ -60,13 +58,6 @@ function ProductPage() {
             placeholder="Search product name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              padding: "10px",
-              width: "300px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
-              marginBottom: "10px",
-            }}
           ></input>
           <Search size={20} style={{ color: "black" }} className="search" />
         </div>

@@ -31,10 +31,16 @@ function Modal({
           <button className="modalbutton" onClick={handleAddToCart}>
             ADD TO CART
           </button>
-          <button onClick={() => router.push("/Cart")}>Go to Cart</button>
+
           <h2>DECRIPTION</h2>
           <p>{description}</p>
-          <div>
+          <div className="gotocart">
+            <button
+              onClick={() => router.push("/Cart")}
+              className="modalbutton2"
+            >
+              GO TO CART
+            </button>
             <button onClick={handleCloseModal} className="button2">
               CLOSE
             </button>

@@ -89,7 +89,7 @@ body {
 }
   
 button.checkout {
-    background-color: #4CAF50;
+    background-color: #2F6A56;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -97,7 +97,7 @@ button.checkout {
 }
   
 button.checkout:hover {
-    background-color: #45a049;
+    background-color: #2F6A56;
 }
 
 .cart-item {
@@ -106,9 +106,6 @@ button.checkout:hover {
     padding: 10px;
     border-bottom: 1px solid #989898;
     border-radius: 5px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
     background-color: #2A2A2A;
     color: #ffffff;
 }
