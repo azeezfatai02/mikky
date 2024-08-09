@@ -23,7 +23,7 @@ export default function AddProduct({ onAddProduct }) {
     setTitle("");
     setDescription("");
     setPrice("");
-    // setCategory("");
+
     setImage("");
   };
 

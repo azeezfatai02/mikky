@@ -19,7 +19,6 @@ function Modal({
   const handleAddToCart = () => {
     addToCart({ id, title, images, alt, price, description, quantity: 1 });
     alert("Item added to cart");
-    // toggleModal();
   };
   return (
     <div className="modal">
