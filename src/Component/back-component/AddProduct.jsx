@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import "./AddProduct.css";
 
 export default function AddProduct({ onAddProduct }) {
   const [title, setTitle] = useState("");

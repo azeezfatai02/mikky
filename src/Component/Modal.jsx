@@ -18,6 +18,7 @@ function Modal({
   const handleAddToCart = () => {
     addToCart({ id, title, images, alt, price, description, quantity: 1 });
     alert("Item added to cart");
+    toggleModal();
   };
   return (
     <div className="modal">
@@ -38,6 +39,7 @@ function Modal({
             <button
               onClick={() => router.push("/Cart")}
               className="modalbutton2"
+              aria-label="Go to cart"
             >
               GO TO CART
             </button>

@@ -41,129 +41,55 @@ function ProductPage() {
     return matchesCategory && matchesSearch;
   });
 
-  const handleAddProduct = (newProduct) => {
-    setProducts([...products, newProduct]);
-  };
+  // const handleAddProduct = (newProduct) => {
+  //   setProducts([...products, newProduct]);
+  // };
 
   return (
     <div className="ProductPage">
-      <div className="manage-h1">
-        <h1 style={{ color: "black" }}>Manage Product</h1>
-      </div>
-      <div className="manage">
-        <h2>{selectedCategory || "All Products"}</h2>
-        <div className="search-div">
-          <input
-            type="text"
-            placeholder="Search product name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          ></input>
-          <Search size={20} style={{ color: "black" }} className="search" />
+      <h1>Manage Product</h1>
+      <div className="sub-manage">
+        <div className="manage">
+          <div className="search-div">
+            <input
+              type="text"
+              placeholder="Search product name..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            ></input>
+            <Search size={20} style={{ color: "black" }} className="search" />
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredProducts.map((product, index) => (
+                <tr key={index}>
+                  <td>
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{ width: "100px", height: "100px" }}
+                    />
+                  </td>
+                  <td>{product.title}</td>
+                  <td>{new Date(product.date).toLocaleDateString()}</td>
+                  <td>{product.description}</td>
+                  <td>{product.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <ul>
-          {filteredProducts.map((product, index) => (
-            <li key={index}>
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                <thead>
-                  <tr>
-                    <th
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "10px",
-                        color: "black",
-                      }}
-                    >
-                      Image
-                    </th>
-                    <th
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "10px",
-                        color: "black",
-                      }}
-                    >
-                      Title
-                    </th>
-                    <th
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "10px",
-                        color: "black",
-                      }}
-                    >
-                      Date
-                    </th>
-                    <th
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "10px",
-                        // color: "white",
-                      }}
-                    >
-                      Description
-                    </th>
-                    <th
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "10px",
-                        // color: "white",
-                      }}
-                    >
-                      Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProducts.map((product, index) => (
-                    <tr key={index}>
-                      <td style={{ border: "1px solid #ccc", padding: "10px" }}>
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          style={{ width: "100px", height: "100px" }}
-                        />
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid #ccc",
-                          padding: "10px",
-                          //   color: "white",
-                        }}
-                      >
-                        {product.title}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "10px" }}>
-                        {new Date(product.date).toLocaleDateString()}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid #ccc",
-                          padding: "10px",
-                          //   color: "white",
-                        }}
-                      >
-                        {product.description}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid #ccc",
-                          padding: "10px",
-                          //   color: "white",
-                        }}
-                      >
-                        {product.price}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </li>
-          ))}
-        </ul>
       </div>
-      {/* <AddProduct onAddProduct={handleAddProduct} /> */}
-      <button onClick={() => setSelectedCategory("")}>Show All Products</button>
     </div>
   );
 }
