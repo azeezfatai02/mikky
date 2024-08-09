@@ -1,10 +1,11 @@
 import React from "react";
 import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
 import useCartStore from "@/screens/cart/useCartStore";
 
 function Modal({
   id,
-  toogleModel,
+  toogleModal,
   title,
   images,
   alt,
@@ -18,7 +19,7 @@ function Modal({
   const handleAddToCart = () => {
     addToCart({ id, title, images, alt, price, description, quantity: 1 });
     alert("Item added to cart");
-    toggleModal();
+    // toggleModal();
   };
   return (
     <div className="modal">
@@ -51,18 +52,6 @@ function Modal({
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-  // Fetch product details using the id
-  const product = {
-    id,
-    name: `Product ${id}`,
-    price: `$${id * 10}`,
-  };
-
-  return { props: { product } };
 }
 
 export default Modal;
