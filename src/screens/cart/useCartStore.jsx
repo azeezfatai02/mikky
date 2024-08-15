@@ -19,6 +19,7 @@ const useCartStore = create((set) => ({
     })),
   clearCart: () => set({ cart: [] }),
   addOrder: (order) => set((state) => ({ orders: [...state.orders, order] })),
+  
 }));
 
 export default useCartStore;

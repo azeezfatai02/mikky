@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // import { getAnalytics } from "firebase/analytics";
 
@@ -23,11 +23,27 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const colRef = collection(db, "motors");
 
 // Authentication function
 const signin = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
+//get collection data
+const getMotorsData = async () => {
+  try {
+    const querySnapshot = await getDocs(colRef);
+    let motors = [];
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+      motors.push(doc.data());
+    });
+    return motors;
+  } catch (err) {
+    console.error("Error getting documents: ", err);
+    return [];
+  }
+};
 // Export the services and functions
-export { auth, db, storage, signin };
+export { auth, db, storage, signin, getMotorsData };
