@@ -1,11 +1,15 @@
 "use client";
+
 import React, { useState } from "react";
 import { db, storage } from "@/app/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import MyComponent from "./MyComponent";
+import dynamic from "next/dynamic";
 import { Plus, TriangleAlert } from "lucide-react";
 import "./AddProduct.css";
+
+// Dynamically import MyComponent to prevent SSR issues
+const MyComponent = dynamic(() => import("./MyComponent"), { ssr: false });
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
@@ -122,38 +126,36 @@ const AddProduct = () => {
           </form>
         </div>
         <div className="form2">
-          <form action="">
-            <h2>Upload File</h2>
-            <label className="upload">
-              {!imagePreview ? (
-                <>
-                  <Plus />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
-                  <p>Main Image</p>
-                </>
-              ) : (
-                <img
-                  src={imagePreview}
-                  alt="Image Preview"
-                  className="image-preview"
-                  style={{ width: "600px", height: "inherit" }}
+          <h2>Upload File</h2>
+          <label className="upload">
+            {!imagePreview ? (
+              <>
+                <Plus />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
                 />
-              )}
-            </label>
-            <div className="alert">
-              <div>
-                <TriangleAlert />
-              </div>
-              <p>
-                Image needs to be between 500x500 and 2000x2000 pixels. No
-                watermarks. Maximum image size 2Mb.
-              </p>
+                <p>Main Image</p>
+              </>
+            ) : (
+              <img
+                src={imagePreview}
+                alt="Image Preview"
+                className="image-preview"
+                style={{ width: "600px", height: "inherit" }}
+              />
+            )}
+          </label>
+          <div className="alert">
+            <div>
+              <TriangleAlert />
             </div>
-          </form>
+            <p>
+              Image needs to be between 500x500 and 2000x2000 pixels. No
+              watermarks. Maximum image size 2Mb.
+            </p>
+          </div>
         </div>
       </div>
     </div>
