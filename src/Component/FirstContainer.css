@@ -1,10 +1,7 @@
 
 .theContainer{
-  /* background-color: #151F1E; */
   background-image: url(../../public/car-background.jpg);
-  /* background-repeat: no-repeat; */
   background-size: 100%;
-  /* position: relative; */
 }
 
 .firstcont{
@@ -14,7 +11,6 @@
   margin: auto;
 }
 img{
-  /* max-width: 100%; */
   display: block;
   height: auto;
   max-width: 1146px;
@@ -25,8 +21,6 @@ img{
   color: rgb(124, 78, 78);
   align-items: center;
   justify-content: center;
-  /* margin-left: 5%;
-  margin-right: 5%; */
   font-family: 'Poppins', sans-serif;
   height: 500px;
   width: 100%;

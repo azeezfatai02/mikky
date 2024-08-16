@@ -1,16 +1,9 @@
 .second {
-    /* padding: 20px; */
     color: #ffffff;
     width: min(100% - 9vw,1110px);
     margin-inline: auto;
     padding-top: 50px;
   }
-  /* .second{
-    color: #ffffff;
-    width: min(100% - 9vw,1110px);
-    margin-inline: auto;
-    padding-top: 50px;
-  } */
   
   .pro {
     display: flex;
@@ -18,13 +11,6 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  /* .pro{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1146px;
-    margin-inline: auto;
-  } */
   
   .pro h2 {
     margin: 0;
@@ -66,7 +52,6 @@
     transform: scale(1.05);
   }
   .for-product-info{
-    /* border: 1px solid white; */
     display: flex;
     flex-direction: column;
     align-items: center;

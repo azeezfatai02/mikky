@@ -5,7 +5,7 @@ body {
 .cart-page {
   padding: 50px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   margin-inline: auto;
   max-width: 93%;
@@ -68,12 +68,6 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid #989898;
 }
-  
-
-  
-/* .cart-item-content h2 {
-  flex: 1;
-} */
   
 .cart-item-content p {
     margin-right: 20px;

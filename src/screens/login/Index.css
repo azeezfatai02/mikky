@@ -68,16 +68,6 @@ form h2{
     margin-bottom: 2%;
 }
 
-/* .sbutton{
-    margin-top: 2%;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #ffffff;
-    color:black;
-    cursor: pointer;
-    width: 70%;
-} */
 hr{
     margin-top: 4%;
     border: none;
@@ -88,16 +78,7 @@ hr{
     color: #ffffff;
 }
 
-/* .tbutton{
-    margin-top: 2%;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #2F6A56 ;
-    color: #ffffff;
-    cursor: pointer;
-    width: 70%;
-} */
+
 
 .sign{
     display: flex;

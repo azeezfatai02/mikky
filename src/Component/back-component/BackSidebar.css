@@ -25,7 +25,7 @@
     /* transition: background-color 0.3s; */
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
-    align-items: end;
+    align-items: flex-end;
 }
   
 .sidebar-links li:hover {
@@ -34,7 +34,7 @@
 }
 .sidebar-brand{
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     margin-bottom: 10px;
     text-align: end;
     text-decoration: none;
