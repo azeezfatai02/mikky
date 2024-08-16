@@ -2,7 +2,7 @@
     background-color: #ffffff;
     box-shadow: -2px 5px 14px 0px #1F272238;
     padding: 24px;
-    max-width: 648px;
+    max-width: 600px;
 }
 
 .form1 h2{
@@ -51,7 +51,7 @@
     align-items: center;
     border: 2px dotted #3FC79A;
     /* padding: 20px; */
-    width: inherit;
+    width: 286px;
     height: 150px;
     justify-content: center;
 }

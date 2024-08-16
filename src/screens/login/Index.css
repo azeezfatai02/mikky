@@ -10,7 +10,7 @@ body{
     margin-top: 5%;
 }
 
-button{
+.sbutton{
     background-color: #2F6A56;
    width: 100%;
    padding-block: 12px;

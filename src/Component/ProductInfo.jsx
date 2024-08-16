@@ -37,7 +37,11 @@ export default function ProductsInfo({
       )}
       <div className="product-info">
         <div onClick={toogleModel} className="for-product-info">
-          <img src={images} alt={alt} />
+          <img
+            src={images}
+            alt={alt}
+            style={{ width: "200px", height: "inherit" }}
+          />
           <h3>{title}</h3>
           <p>{price}</p>
         </div>

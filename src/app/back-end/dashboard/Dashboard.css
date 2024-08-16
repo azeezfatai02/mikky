@@ -34,7 +34,7 @@ a {
     margin-left: 270px;
     padding: 20px;
     width: 100%;
-    display: flex;
+    /* display: flex; */
     height: calc(100vh - 60px);
 }
 
