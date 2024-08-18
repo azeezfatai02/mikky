@@ -58,7 +58,7 @@ function ProductPage() {
 
   return (
     <div className="ProductPage">
-      <h1>Manage Product</h1>
+      <h1>Manage Products</h1>
       <div className="sub-manage">
         <div className="manage">
           <div className="search-div">
@@ -111,14 +111,17 @@ function ProductPage() {
                       />
                     </td>
                     <td>{product.title}</td>
-                    <td>{new Date(product.date).toLocaleDateString()}</td>
+                    <td>{product.date.toLocaleDateString()}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
                     <td>
-                      <button onClick={() => handleDelete(product.id)}>
+                      <button
+                        onClick={() => handleDelete(product.id)}
+                        className="delete-button"
+                      >
                         Delete
                       </button>
-                      <button>Edit</button>
+                      <button className="edit-button">Edit</button>
                     </td>
                   </tr>
                 ))

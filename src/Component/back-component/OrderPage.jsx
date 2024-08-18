@@ -1,22 +1,28 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useCartStore from "@/screens/cart/useCartStore";
 import { useRouter } from "next/navigation";
-import CartList from "@/screens/cart/Cart-list";
-import "./OrderPage.css";
 import { ArrowDown, Search } from "lucide-react";
+import "./OrderPage.css";
 
 const OrderPage = () => {
   const { orders, clearCart } = useCartStore();
   const [searchQuery, setSearchQuery] = useState("");
 
   const router = useRouter();
+
   const handleCancelOrder = (index) => {
-    const updatedOrders = orders.filter(
-      (_, orderIndex) => orderIndex !== index
+    const confirmCancel = window.confirm(
+      "Are you sure you want to cancel this order?"
     );
-    useCartStore.setState({ orders: updatedOrders });
+    if (confirmCancel) {
+      const updatedOrders = orders.filter(
+        (_, orderIndex) => orderIndex !== index
+      );
+      useCartStore.setState({ orders: updatedOrders });
+    }
   };
+
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -37,36 +43,29 @@ const OrderPage = () => {
             placeholder="Search by product name"
             value={searchQuery}
             onChange={handleSearchInputChange}
+            className="search-input"
           />
+          <Search className="search-icon" />
         </div>
-        <Search
-          style={{
-            color: "#3FC79A",
-            position: "absolute",
-            top: "119px",
-            left: "650px",
-          }}
-        />
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div>
-            <table className="orders-table">
-              <thead>
+        <div>
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>
+                  Order Date <ArrowDown />
+                </th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredOrders.length === 0 ? (
                 <tr>
-                  <th>Product Name</th>
-                  <th>
-                    Order date <ArrowDown />
-                  </th>
-                  <th> Price</th>
-                  <th>Actions</th>
+                  <td colSpan="4">No orders found.</td>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredOrders.length === 0 && (
-                  <tr>
-                    <td colSpan="4">No orders found.</td>
-                  </tr>
-                )}
-                {orders.map((order, index) => (
+              ) : (
+                filteredOrders.map((order, index) => (
                   <tr key={index}>
                     <td>
                       <ol>
@@ -79,25 +78,31 @@ const OrderPage = () => {
                     </td>
                     <td>{order.orderDate}</td>
                     <td>
-                      {order.cart.reduce(
-                        (total, item) => total + item.price,
-                        0
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      }).format(
+                        order.cart.reduce(
+                          (total, item) => total + item.price,
+                          0
+                        )
                       )}
                     </td>
                     <td>
                       <button
                         type="button"
                         onClick={() => handleCancelOrder(index)}
+                        className="cancel-button"
                       >
                         Cancel
                       </button>
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </form>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
