@@ -62,9 +62,9 @@ form h2{
     background-color: #131311 ;
     color: #ffffff;
     cursor: pointer;
-    align-items: end;
+    align-items: flex-end;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 2%;
 }
 

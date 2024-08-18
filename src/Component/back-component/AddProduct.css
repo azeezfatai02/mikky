@@ -30,8 +30,6 @@
     background-color: #ffffff;
     box-shadow: -2px 5px 14px 0px #1F272238;
     padding: 24px;
-    /* min-width: 300px; */
-    /* max-height: 500px; */
     max-width: 350px;
     height: fit-content;
 }
@@ -44,19 +42,15 @@
 
 
 .upload{
-    /* height: inherit; */
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 2px dotted #3FC79A;
-    /* padding: 20px; */
     width: 286px;
     height: 150px;
     justify-content: center;
 }
 button[type="submit"] {
-    /* width: 100%; */
     padding: 12px;
     background-color: #420767;
     color: white;
