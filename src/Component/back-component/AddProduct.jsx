@@ -7,9 +7,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import dynamic from "next/dynamic";
 import { Plus, TriangleAlert } from "lucide-react";
 import "./AddProduct.css";
+import "react-quill/dist/quill.snow.css";
 
 // Dynamically import MyComponent to prevent SSR issues
-const MyComponent = dynamic(() => import("./MyComponent"), { ssr: false });
+// const MyComponent = dynamic(() => import("./MyComponent"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
@@ -118,7 +120,12 @@ const AddProduct = () => {
 
             <div>
               <label>Product Description*</label>
-              <MyComponent value={description} onChange={setDescription} />
+              {/* <MyComponent value={description} onChange={setDescription} /> */}
+              <ReactQuill
+                theme="snow"
+                value={description}
+                onChange={setDescription}
+              />
             </div>
             <button type="submit" disabled={isUploading}>
               {isUploading ? "Uploading..." : "Save"}
