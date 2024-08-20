@@ -1,62 +1,89 @@
 
-.theContainer{
-  background-image: url(../../public/car-background.jpg);
-  background-size: 100%;
-}
 
-.firstcont{
-  display: flex;
-  justify-content: space-between;
-  max-width: 1146px;
-  margin: auto;
-}
-img{
-  display: block;
-  height: auto;
-  max-width: 1146px;
-}
-.middlealfa{
-  display: flex;
-  flex-direction: column;
-  color: rgb(124, 78, 78);
-  align-items: center;
-  justify-content: center;
-  font-family: 'Poppins', sans-serif;
-  height: 500px;
-  width: 100%;
-  font-size: 35px;
-  top: 3%;
-}
-/* Responsive styles */
-@media (max-width: 768px) {
+  .theContainer {
+    background-image: url(../../public/car-background.jpg);
+    background-size: cover; /* Changed to cover for better background fitting */
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Ensure the container takes the full height */
+  }
+  
+  .firstcont {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1146px;
+    margin: auto;
+    padding: 20px; /* Add some padding for spacing */
+  }
+  
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%; /* Make images responsive */
+  }
+  
+  .middlealfa {
+    display: flex;
+    flex-direction: column;
+    color: rgb(124, 78, 78);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    height: 500px;
+    width: 100%;
+    font-size: 35px;
+    top: 3%;
+    padding: 20px; /* Add padding for better spacing */
+    text-align: center; /* Center text for better aesthetics */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .theContainer {
+      height: auto; /* Allows height to adjust based on content for smaller screens */
+      padding: 20px; /* Adds padding for better spacing */
+    }
     .fsetimg {
       flex-direction: column;
       gap: 10px;
     }
   
     .hero_img img {
-      width: 80px;
+      width: 80px; /* Adjust size for medium screens */
+      margin: 0 auto; /* Center the image */
     }
   
     .middlealfa h1 {
-      font-size: 2em;
+      font-size: 2em; /* Adjust font size */
     }
   
     .middlealfa h3 {
-      font-size: 1.2em;
+      font-size: 1.2em; /* Adjust font size */
     }
   }
   
   @media (max-width: 480px) {
     .hero_img img {
-      width: 60px;
+      width: 60px; /* Smaller image size for mobile */
+      margin: 0 auto; /* Center the image */
+    }
+  
+    .middlealfa {
+      height: auto; /* Adjust height for flexibility */
+      padding: 10px; /* Reduce padding on mobile */
     }
   
     .middlealfa h1 {
-      font-size: 1.8em;
+      font-size: 1.8em; /* Font size adjustment */
     }
   
     .middlealfa h3 {
-      font-size: 1em;
+      font-size: 1em; /* Font size adjustment */
+    }
+  
+    .firstcont {
+      flex-direction: column; /* Stack items vertically on mobile */
+      align-items: center; /* Center items */
+      padding: 10px; /* Reduce padding */
     }
   }
+  

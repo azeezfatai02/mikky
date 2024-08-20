@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 
 export default function ProductsInfo({
@@ -11,18 +10,15 @@ export default function ProductsInfo({
   title,
   description,
 }) {
-  const [openModal, setOpenModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toogleModel = () => {
-    setOpenModal(true);
-  };
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
     <>
-      {openModal && (
+      {isModalOpen && (
         <Modal
           id={id}
           className="modal"
@@ -31,12 +27,11 @@ export default function ProductsInfo({
           price={price}
           title={title}
           description={description}
-          toogleModel={toogleModel}
-          handleCloseModal={handleCloseModal}
+          onClose={toggleModal} // Use onClose to pass the toggleModal function
         />
       )}
       <div className="product-info">
-        <div onClick={toogleModel} className="for-product-info">
+        <div onClick={toggleModal} className="for-product-info">
           <img
             src={images}
             alt={alt}

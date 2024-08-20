@@ -7,6 +7,7 @@
 img{
   max-width: 100%;
   height: auto;
+  display: block;
 }
 html,
 body {
@@ -50,10 +51,7 @@ header{
   display: flex;
   flex-direction: column;
 }
-img{
-  max-width: 100%;
-  display: block;
-} 
+
 
 .hero_img{
  max-width: 400px;
@@ -80,10 +78,7 @@ img{
   p{
     color: #ffffff;
   }
-  img{
-    max-width: 100%;
-    display: block;
-  }
+
   color: #ffffff;
 }
 
@@ -158,14 +153,19 @@ footer{
   right: 0px;
   top: 0px;
   width: 100%;
-  background-color: rgba(232, 21, 21, 0.001);
+  background-color: rgba(232, 21, 21, 0.1);;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(5px);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+}
+
+.modal-img-div{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .modaldiv{
   display: flex;
@@ -189,10 +189,8 @@ footer{
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
-  padding: 10px;
   margin-top: 50px;
   width: 70%;
-  height: 60%;
 }
 .modalbutton{
   width: 50%;
@@ -202,32 +200,37 @@ footer{
   line-height: 28px;
   text-align: center;
   background-color: #2F6A56;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 .modalbutton2{
-  /* width: 50%; */
+  width: 50%;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
   line-height: 28px;
   text-align: center;
-  background-color: #2F6A56;
+  background-color: #ffffff;
   border-radius: 10px;
-  color: #ffffff;
+  color: black;
   padding: 5px;
+  margin-bottom: 10px;
 }
 .modalcont{
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .gotocart{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 .modalcont h1,h2{
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .modal img{
   width: 100%;
@@ -280,5 +283,77 @@ aside h2{
   align-items: center;
   padding: 5px;
   width: 8rem;
+}
+
+
+
+/* General styles remain unchanged */
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 10px; /* Add some padding to body on mobile */
+  }
+
+  header {
+    flex-direction: column; /* Stack header items vertically */
+    align-items: center;
+    font-size: 16px; /* Slightly smaller font size */
+  }
+
+  .prodses {
+    grid-template-columns: 1fr; /* Single column layout for products */
+    gap: 15px; /* Reduced gap between items */
+  }
+
+  .AddProduct {
+    padding: 15px; /* Reduce padding for mobile */
+  }
+
+  .title, .description {
+    font-size: 18px; /* Adjust font size for titles and descriptions */
+  }
+
+  .modaldiv {
+    flex-direction: column; /* Stack content in modal vertically */
+    width: 90%; /* Make modal width responsive */
+    padding: 20px; /* Reduce padding in modal */
+  }
+
+  .modalbutton, .modalbutton2 {
+    width: 100%; /* Full width buttons */
+    font-size: 14px; /* Slightly larger font size for buttons */
+  }
+
+  aside {
+    width: 100%; /* Full width for aside on mobile */
+    padding: 1rem; /* Adjust padding */
+    margin-bottom: 20px; /* Add space below aside */
+  }
+
+  .icons {
+    flex-direction: column; /* Stack icons vertically */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 14px; /* Even smaller font size for small screens */
+  }
+
+  .title, .description {
+    font-size: 16px; /* Further adjust font size for mobile */
+  }
+
+  .AddProduct h2 {
+    font-size: 20px; /* Adjust title size in AddProduct */
+  }
+
+  .modalcont h1, .modalcont h2 {
+    font-size: 18px; /* Reduce font size in modal */
+  }
+
+  .modalbutton, .modalbutton2 {
+    padding: 10px; /* Adjust padding for buttons */
+  }
 }
 
