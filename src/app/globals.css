@@ -160,6 +160,8 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 .modal-img-div{
