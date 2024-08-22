@@ -10,7 +10,7 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    image: "/Cartyres.png",
+    image: "/tyreeee.png",
     title: "TYRES",
     price: "200000",
     alt: "a product image",
@@ -68,7 +68,7 @@ export const ALLPRODUCTS = [
   {
     id: 2,
     image: "/Cartyres.png",
-    title: "TYRES",
+    title: "tyreeee",
     price: "200000",
     alt: "a product image",
     description:
