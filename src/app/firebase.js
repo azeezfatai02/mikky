@@ -1,9 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-// import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -25,19 +29,43 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const colRef = collection(db, "motors");
 
-// Authentication function
+/**
+ * Sign in with email and password.
+ * @param {string} email - The user's email address.
+ * @param {string} password - The user's password.
+ * @returns {Promise} - A promise that resolves with the user credentials.
+ */
 const signin = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-//get collection data
+/**
+ * Sign in with Google using a popup.
+ * @returns {Promise} - A promise that resolves with user information or an error.
+ */
+const googleSignIn = async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    return { success: true, user };
+  } catch (error) {
+    console.error("Error signing in with Google: ", error);
+    return { success: false, error: error.message };
+  }
+};
+
+/**
+ * Fetch motors data from Firestore.
+ * @returns {Promise<Array>} - A promise that resolves with an array of motors.
+ */
 const getMotorsData = async () => {
   try {
     const querySnapshot = await getDocs(colRef);
     let motors = [];
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-      motors.push(doc.data());
+      motors.push({ id: doc.id, ...doc.data() });
     });
     return motors;
   } catch (err) {
@@ -45,5 +73,6 @@ const getMotorsData = async () => {
     return [];
   }
 };
+
 // Export the services and functions
-export { auth, db, storage, signin, getMotorsData };
+export { auth, db, storage, signin, googleSignIn, getMotorsData };

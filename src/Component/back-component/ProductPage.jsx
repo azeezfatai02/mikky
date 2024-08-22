@@ -1,14 +1,24 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "@/app/firebase";
 import { Search } from "lucide-react";
+import EditProductModal from "./EditModal";
 import "./ProductPage.css";
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [editProduct, setEditProduct] = useState(null); // State to handle editing
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,6 +32,9 @@ function ProductPage() {
         setProducts(productsData);
       } catch (error) {
         console.error("Error fetching products: ", error);
+        setError("Failed to fetch products.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -44,6 +57,37 @@ function ProductPage() {
     setSearchTerm("");
   };
 
+  const handleEditClick = (product) => {
+    setEditProduct(product);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
+  };
+
+  const handleEditSave = async () => {
+    try {
+      const productDoc = doc(db, "motors", editProduct.id);
+      await updateDoc(productDoc, editProduct);
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product.id === editProduct.id ? editProduct : product
+        )
+      );
+      setEditProduct(null);
+    } catch (error) {
+      console.error("Error updating product: ", error);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setEditProduct(null);
+  };
+
   const categories = [...new Set(products.map((product) => product.category))];
 
   const filteredProducts = products.filter((product) => {
@@ -56,6 +100,14 @@ function ProductPage() {
     return matchesCategory && matchesSearch;
   });
 
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div className="ProductPage">
       <h1>Manage Products</h1>
@@ -67,6 +119,7 @@ function ProductPage() {
               placeholder="Search product name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Search product name"
             />
             <Search size={20} style={{ color: "black" }} className="search" />
           </div>
@@ -74,6 +127,7 @@ function ProductPage() {
             <select
               value={selectedCategory}
               onChange={(e) => handleCategoryChange(e.target.value)}
+              aria-label="Filter by category"
             >
               <option value="">All Categories</option>
               {categories.map((category, index) => (
@@ -118,16 +172,33 @@ function ProductPage() {
                       <button
                         onClick={() => handleDelete(product.id)}
                         className="delete-button"
+                        aria-label={`Delete ${product.title}`}
                       >
                         Delete
                       </button>
-                      <button className="edit-button">Edit</button>
+                      <button
+                        onClick={() => handleEditClick(product)}
+                        className="edit-button"
+                        aria-label={`Edit ${product.title}`}
+                      >
+                        Edit
+                      </button>
                     </td>
                   </tr>
                 ))
               )}
             </tbody>
           </table>
+
+          {/* Render the EditProductModal component */}
+          {editProduct && (
+            <EditProductModal
+              product={editProduct}
+              onClose={handleCloseModal}
+              onSave={handleEditSave}
+              onChange={handleEditChange}
+            />
+          )}
         </div>
       </div>
     </div>

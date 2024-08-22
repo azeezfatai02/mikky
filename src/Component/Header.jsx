@@ -92,9 +92,9 @@ export default function Header() {
               <Link href="/Cart" onClick={toggleMobileMenu}>
                 Cart
               </Link>
-              {/* <Link href="/profile" onClick={toggleMobileMenu}>
+              <Link href="/profile" onClick={toggleMobileMenu}>
                 Profile
-              </Link> */}
+              </Link>
               <button onClick={handleLogout}>Logout</button>
             </>
           )}

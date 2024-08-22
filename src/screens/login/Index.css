@@ -89,3 +89,21 @@ hr{
     font-weight: 400;
     margin-left: 3px;
 }
+
+.google-login {
+    margin-top: 10px;
+}
+  
+.google-login button {
+    background-color: #db4437; /* Google red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+  
+.google-login button:hover {
+    background-color: #c13528; /* Darker shade on hover */
+}
+  

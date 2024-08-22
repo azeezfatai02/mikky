@@ -150,6 +150,11 @@
     padding: 10px 5px;
     justify-content: center;
   }
+  .logout-button {
+    width: 100%; /* Full width for login button */
+    padding: 10px 5px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
