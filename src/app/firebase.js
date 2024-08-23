@@ -27,7 +27,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const colRef = collection(db, "motors");
+const motorsColRef = collection(db, "motors");
+const ordersColRef = collection(db, "orders"); // New orders collection
 
 /**
  * Sign in with email and password.
@@ -61,18 +62,43 @@ const googleSignIn = async () => {
  */
 const getMotorsData = async () => {
   try {
-    const querySnapshot = await getDocs(colRef);
+    const querySnapshot = await getDocs(motorsColRef);
     let motors = [];
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
       motors.push({ id: doc.id, ...doc.data() });
     });
     return motors;
   } catch (err) {
-    console.error("Error getting documents: ", err);
+    console.error("Error getting motors documents: ", err);
+    return [];
+  }
+};
+
+/**
+ * Fetch orders data from Firestore.
+ * @returns {Promise<Array>} - A promise that resolves with an array of orders.
+ */
+const getOrdersData = async () => {
+  try {
+    const querySnapshot = await getDocs(ordersColRef);
+    let orders = [];
+    querySnapshot.forEach((doc) => {
+      orders.push({ id: doc.id, ...doc.data() });
+    });
+    return orders;
+  } catch (err) {
+    console.error("Error getting orders documents: ", err);
     return [];
   }
 };
 
 // Export the services and functions
-export { auth, db, storage, signin, googleSignIn, getMotorsData };
+export {
+  auth,
+  db,
+  storage,
+  signin,
+  googleSignIn,
+  getMotorsData,
+  getOrdersData,
+};

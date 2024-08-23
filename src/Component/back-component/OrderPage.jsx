@@ -8,7 +8,6 @@ import "./OrderPage.css";
 const OrderPage = () => {
   const { orders, clearCart } = useCartStore();
   const [searchQuery, setSearchQuery] = useState("");
-
   const router = useRouter();
 
   const handleCancelOrder = (index) => {
@@ -36,8 +35,8 @@ const OrderPage = () => {
   return (
     <div className="order-page">
       <h1 className="order-page-h1">Order</h1>
-      <div style={{ backgroundColor: "#F7F6F6", height: "100%" }}>
-        <div style={{ position: "relative" }}>
+      <div className="order-page-container">
+        <div className="search-container">
           <input
             type="text"
             placeholder="Search by product name"
@@ -47,7 +46,7 @@ const OrderPage = () => {
           />
           <Search className="search-icon" />
         </div>
-        <div>
+        <div className="orders-container">
           <table className="orders-table">
             <thead>
               <tr>
