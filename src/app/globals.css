@@ -335,6 +335,9 @@ aside h2{
   .icons {
     flex-direction: column; /* Stack icons vertically */
   }
+  .allprod{
+    margin-bottom: 25px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -352,6 +355,12 @@ aside h2{
 
   .modalcont h1, .modalcont h2 {
     font-size: 18px; /* Reduce font size in modal */
+  }
+  .allprod{
+    margin-bottom: 25px;
+  }
+  aside {
+    padding: 10px; /* Adjust padding for mobile */
   }
 
   .modalbutton, .modalbutton2 {

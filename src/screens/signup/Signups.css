@@ -18,6 +18,8 @@ form{
 .for-names{
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+    width: 100%;
 }
 .joinname{
     display: flex;
@@ -31,8 +33,9 @@ input{
     height: 35px;
     /* border: none; */
     background-color: #131311;
-    border-bottom: 1px bold #ffffff;
+    border-bottom: 1px solid #ffffff;
     color: #ffffff;
+    padding-left: 10px;
 }
 .joinother{
     display: flex;
@@ -47,4 +50,56 @@ button{
 }
 a{
     color: blue;
+    text-decoration: none;
 }
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+
+@media (max-width: 600px) {
+    .allsign h1 {
+      font-size: 1.5rem; /* Adjust the font size for the heading */
+      margin-block: 5%; /* Increase margin to add more space */
+    }
+  
+    form {
+      width: 90%; /* Make the form take up more space on smaller screens */
+      margin-inline: 5%; /* Ensure form is centered with some padding */
+    }
+  
+    .for-names {
+      flex-direction: column; /* Stack first name and last name vertically */
+      gap: 10px; /* Add space between the stacked inputs */
+    }
+  
+    .joinname {
+      width: 100%; /* Ensure inputs take full width in the column layout */
+      margin-top: 5%; /* Increase the top margin for better spacing */
+    }
+  
+    .joinother {
+      margin-top: 4%; /* Increase the top margin for other form fields */
+      width: 100%; /* Ensure these fields take the full width */
+    }
+  
+    input {
+      width: 100%; /* Inputs take up the full width */
+      padding: 10px; /* Add padding inside inputs for better touch experience */
+    }
+  
+    button {
+      width: 100%; /* Make buttons full width */
+      height: 45px; /* Increase button height for better tap targets */
+      font-size: 1rem; /* Increase font size for readability */
+    }
+  
+    a {
+      font-size: 1rem; /* Adjust link font size */
+      text-align: center; /* Center the link text */
+      display: block; /* Ensure the link takes up full width */
+      margin-top: 10px; /* Add margin to space it out from other elements */
+    }
+  }
+  

@@ -13,11 +13,17 @@ body{
 .sbutton{
     background-color: #2F6A56;
    width: 100%;
-   padding-block: 12px;
+   /* padding-block: 12px; */
    color: white;
    border-radius: 8px;
    border: none;
    font-size:16px ;
+   padding: 12px 20px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   &:hover{
+    background-color: #27292A;
+   }
 }
 
 form{
@@ -48,6 +54,8 @@ form h2{
     height: 30px;
     background-color: black;
     color: #ffffff;
+    outline: none;
+    border-bottom-color: #2F6A56;
 }
 
 .formdiv input:focus{
@@ -106,4 +114,52 @@ hr{
 .google-login button:hover {
     background-color: #c13528; /* Darker shade on hover */
 }
+  
+
+
+
+@media (max-width: 600px) {
+    .alllogin {
+      margin-top: 10%; /* Increase top margin for smaller screens */
+    }
+    .alllogin h1{
+        font-size: 1.5em; /* Adjust brand font size */
+    }
+  
+    form {
+      width: 90%; /* Make the form take up more space on smaller screens */
+      margin-top: 10%; /* Increase top margin */
+    }
+  
+    .formdiv input {
+      width: 100%; /* Input fields will adjust to the form width */
+    }
+  
+    .sbutton, .fbutton, .google-login button {
+      width: 100%; /* Ensure buttons are full width on mobile */
+      padding-block: 12px; /* Consistent padding across buttons */
+    }
+  
+    .formdiv {
+      margin-top: 4%; /* Increase spacing between form elements */
+    }
+  
+    hr {
+      width: 100%; /* Adjust the width of the horizontal rule */
+    }
+  
+    .sign {
+      flex-direction: column; /* Stack the sign-up link and text vertically */
+      align-items: center; /* Center them horizontally */
+      margin-top: 10px;
+    }
+  
+    .sign a {
+      margin-top: 5px; /* Add space between text and sign-up link */
+    }
+  
+    .google-login {
+      margin-top: 15px; /* Add more space above the Google login button */
+    }
+  }
   

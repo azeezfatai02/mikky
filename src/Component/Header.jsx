@@ -95,7 +95,9 @@ export default function Header() {
               <Link href="/profile" onClick={toggleMobileMenu}>
                 Profile
               </Link>
-              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handleLogout} className="bvb">
+                Logout
+              </button>
             </>
           )}
         </div>
