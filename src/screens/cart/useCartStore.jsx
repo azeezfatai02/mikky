@@ -17,9 +17,14 @@ const useCartStore = create((set) => ({
         item.id === id ? { ...item, quantity: quantity } : item
       ),
     })),
+  updateCartItem: (id, updates) =>
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === id ? { ...item, ...updates } : item
+      ),
+    })),
   clearCart: () => set({ cart: [] }),
   addOrder: (order) => set((state) => ({ orders: [...state.orders, order] })),
-  
 }));
 
 export default useCartStore;

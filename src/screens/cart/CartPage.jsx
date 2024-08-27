@@ -4,14 +4,28 @@ import { useRouter } from "next/navigation";
 import CartList from "./Cart-list";
 import { useState } from "react";
 import "./Carts.css";
+import Link from "next/link";
+
 const CartPage = () => {
-  const { cart, removeFromCart, updateItemQuantity, clearCart, addOrder } =
-    useCartStore();
+  const {
+    cart,
+    removeFromCart,
+    updateItemQuantity,
+    clearCart,
+    addOrder,
+    updateCartItem,
+  } = useCartStore();
   const router = useRouter();
 
-  const [orders, setOrders] = useState([]);
+  const handleCarMakeChange = (itemId, newCarMake) => {
+    updateCartItem(itemId, { carMake: newCarMake, carName: "" });
+  };
+
+  const handleCarNameChange = (itemId, newCarName) => {
+    updateCartItem(itemId, { carName: newCarName });
+  };
+
   const handleCheckout = () => {
-    // Handle checkout logic here
     alert("Proceeding to checkout");
     if (cart.length === 0) {
       alert("Your cart is empty");
@@ -27,6 +41,7 @@ const CartPage = () => {
     alert("Order placed successfully");
     router.push("/back-end/orders"); // Navigate to orders page
   };
+
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.quantity * item.price,
@@ -36,7 +51,7 @@ const CartPage = () => {
   if (cart.length === 0) {
     return (
       <p>
-        Your cart is empty. <a href="/product">Start shopping</a>
+        Your cart is empty. <Link href="/product">Start shopping</Link>
       </p>
     );
   }
@@ -47,7 +62,12 @@ const CartPage = () => {
         <h1>Cart ({totalQuantity})</h1>
         <ul>
           {cart.map((item, i) => (
-            <CartList item={item} key={i} />
+            <CartList
+              item={item}
+              key={i}
+              onCarMakeChange={handleCarMakeChange}
+              onCarNameChange={handleCarNameChange}
+            />
           ))}
         </ul>
       </div>
