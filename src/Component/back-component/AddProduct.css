@@ -81,3 +81,13 @@ input[type="file"]{
     margin-bottom: 20px;
 }
 
+.error-message {
+    color: red;
+    /* margin-bottom: 15px; */
+}
+/* .add-product {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+   */

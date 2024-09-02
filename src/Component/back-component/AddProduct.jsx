@@ -20,15 +20,19 @@ const AddProduct = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [error, setError] = useState(""); // State for error messages
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       // Basic validation for file size (2MB max)
       if (file.size > 2 * 1024 * 1024) {
-        alert("File size exceeds 2MB. Please choose a smaller file.");
+        setError("File size exceeds 2MB. Please choose a smaller file.");
+        setImage(null);
+        setImagePreview(null);
         return;
       }
+      setError(""); // Clear error
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
     }
@@ -37,12 +41,19 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validation checks
     if (!title || !price || !image || !description) {
-      alert("Please fill in all fields and upload an image.");
+      setError("Please fill in all fields and upload an image.");
+      return;
+    }
+
+    if (parseFloat(price) <= 0) {
+      setError("Price must be a positive number.");
       return;
     }
 
     setIsUploading(true);
+    setError(""); // Clear previous errors
 
     const storageRef = ref(storage, `images/${image.name}`);
     const uploadTask = uploadBytesResumable(storageRef, image);
@@ -57,7 +68,7 @@ const AddProduct = () => {
       (error) => {
         console.error("Image upload failed:", error);
         setIsUploading(false);
-        alert("Failed to upload image.");
+        setError("Failed to upload image.");
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
@@ -65,7 +76,7 @@ const AddProduct = () => {
           await addDoc(collection(db, "motors"), {
             title,
             price: parseFloat(price),
-            description: description,
+            description,
             imageUrl: downloadURL,
           });
 
@@ -79,7 +90,7 @@ const AddProduct = () => {
           alert("Product added successfully");
         } catch (error) {
           console.error("Error adding product: ", error);
-          alert("Failed to add product.");
+          setError("Failed to add product.");
         } finally {
           setIsUploading(false);
         }
@@ -90,6 +101,8 @@ const AddProduct = () => {
   return (
     <div className="add-product">
       <div className="allform">
+        {error && <p className="error-message">{error}</p>}{" "}
+        {/* Display error message */}
         <div className="form1">
           <form onSubmit={handleSubmit}>
             <h2>General Information</h2>

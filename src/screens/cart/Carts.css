@@ -94,6 +94,102 @@ button.checkout:hover {
     background-color: #2F6A56;
 }
 
+body {
+  font-family: Arial, sans-serif;
+
+}
+.cart-page {
+  padding: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-inline: auto;
+  max-width: 93%;
+}
+  
+
+.cart-page h1 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  border-bottom: 1px solid #989898;
+  
+}
+
+.for-cart{
+  width: 65%;
+  padding: 10px;
+  border: 1px solid #989898;
+  border-radius: 5px;
+  background-color: #2A2A2A;
+}
+
+.cart-page ul {
+  list-style: none;
+  padding: 0;
+}
+.img-title{
+  display: flex;
+  align-items: center;
+}
+.img-title-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-item img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+.cart-summary{
+  background-color: #2A2A2A;
+  color: #ffffff;
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #989898;
+  border-radius: 5px;
+}
+.cart-summary h2{
+  margin-bottom:20px;
+  border-bottom: 1px solid #989898;
+}
+.cart-summary-button{
+  display: flex;
+  justify-content: space-between;
+}
+.cart-summary-p{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #989898;
+}
+  
+.cart-item-content p {
+    margin-right: 20px;
+}
+  
+.cart-item-content input {
+    width: 50px;
+    margin-right: 20px;
+}
+  
+.cart-item-content button {
+    margin-right: 10px;
+}
+  
+button.checkout {
+    background-color: #2F6A56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+  
+button.checkout:hover {
+    background-color: #2F6A56;
+}
+
 .cart-item {
     list-style-type: none;
     margin: 10px 0;
@@ -159,3 +255,135 @@ button.checkout:hover {
 .remove-button:hover {
     background-color: #ff1a1a;
   }
+
+.cart-item {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #989898;
+    border-radius: 5px;
+    background-color: #2A2A2A;
+    color: #ffffff;
+}
+.remove-input{
+  display: flex;
+  justify-content: space-between;
+}
+  
+.cart-item-content {
+    display: flex;
+    align-items: center;
+}
+  
+.cart-item-image {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+.quantity-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.quantity-buttons button{
+  background-color: #2F6A56;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+  
+.cart-item-details {
+    flex-grow: 1;
+  }
+  
+.quantity-input {
+    width: 50px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+.remove-button {
+    background-color: #2A2A2A;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+.remove-button:hover {
+    background-color: #ff1a1a;
+  }
+
+  .car-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .car-selection label {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .car-selection select {
+    width: 100%;
+    padding: 8px;
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #989898;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  .car-selection select:focus {
+    outline: none;
+    border-color: #2F6A56;
+    box-shadow: 0 0 5px rgba(47, 106, 86, 0.5);
+  }
+  
+  .car-selection select:disabled {
+    background-color: #444444;
+    color: #888888;
+    cursor: not-allowed;
+  }
+
+
+  @media (max-width: 768px) {
+    .cart-page {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .for-cart,
+    .cart-summary {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .img-title-price {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        margin-bottom: 10px;
+    }
+}
+
+/* Smooth transition for hover states */
+button.checkout:hover,
+.quantity-buttons button:hover,
+.remove-button:hover {
+    transition: background-color 0.3s;
+}
+  

@@ -1,24 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Carts.css";
 import useCartStore from "./useCartStore";
 import { Trash2 } from "lucide-react";
 
-export default function CartList({ item, onCarMakeChange, onCarNameChange }) {
-  const { removeFromCart, updateItemQuantity } = useCartStore();
+export default function CartList({ item }) {
+  const { removeFromCart, updateItemQuantity, updateCartItem } = useCartStore();
 
   const carData = {
-    Toyota: ["Corolla", "Camry", "Rav4"],
-    Honda: ["Civic", "Accord", "CR-V"],
-    Ford: ["Mustang", "Fiesta", "Explorer"],
-    BMW: ["3 Series", "5 Series", "X5"],
+    Toyota: [
+      "Corolla",
+      "Camry",
+      "Rav4",
+      "Sienna",
+      "Avalon",
+      "Prius",
+      "Yaris",
+      "C-HR",
+      "Highlander",
+      "4Runner",
+      "Tacoma",
+      "Tundra",
+    ],
+    Honda: [
+      "Civic",
+      "Accord",
+      "CR-V",
+      "Pilot",
+      "HR-V",
+      "Passport",
+      "Prologue",
+      "Ridgeline",
+      "Odyssey",
+    ],
+    Ford: [
+      "Mustang",
+      "Fiesta",
+      "Explorer",
+      "Focus",
+      "Mondeo",
+      "Bronco",
+      "Capri EV",
+      "Edge",
+      "Equator",
+      "Escape",
+      "Kuga",
+      "Everest",
+      "Expedition",
+      "Puma",
+    ],
+    BMW: [
+      "1 Series",
+      "2 Series",
+      "3 Series",
+      "4 Series",
+      "5 Series",
+      "6 Series",
+      "7 Series",
+      "8 Series",
+      "X5",
+    ],
   };
 
-  const [carNames, setCarNames] = useState(carData[item.carMake] || []);
+  const currentYear = new Date().getFullYear();
+  const years = Array.from(
+    { length: currentYear - 1990 + 1 },
+    (_, i) => 1990 + i
+  );
 
-  useEffect(() => {
-    setCarNames(carData[item.carMake] || []);
-    onCarNameChange(item.id, ""); // Reset car name when car make changes
-  }, [item.carMake]);
+  const handleCarMakeChange = (id, carMake) => {
+    updateCartItem(id, { carMake, carName: "", carYear: "" }); // Reset car name and year when make changes
+  };
+
+  const handleCarNameChange = (id, carName) => {
+    updateCartItem(id, { carName });
+  };
+
+  const handleCarYearChange = (id, carYear) => {
+    updateCartItem(id, { carYear });
+  };
 
   const handleIncreaseQuantity = () => {
     updateItemQuantity(item.id, item.quantity + 1);
@@ -50,7 +109,8 @@ export default function CartList({ item, onCarMakeChange, onCarNameChange }) {
             <label>
               <select
                 value={item.carMake || ""}
-                onChange={(e) => onCarMakeChange(item.id, e.target.value)}
+                onChange={(e) => handleCarMakeChange(item.id, e.target.value)}
+                aria-label="Select Car Make"
               >
                 <option value="">Select Car Make</option>
                 {Object.keys(carData).map((make) => (
@@ -63,13 +123,29 @@ export default function CartList({ item, onCarMakeChange, onCarNameChange }) {
             <label>
               <select
                 value={item.carName || ""}
-                onChange={(e) => onCarNameChange(item.id, e.target.value)}
+                onChange={(e) => handleCarNameChange(item.id, e.target.value)}
                 disabled={!item.carMake}
+                aria-label="Select Car Name"
               >
                 <option value="">Select Car Name</option>
-                {carNames.map((name) => (
+                {carData[item.carMake]?.map((name) => (
                   <option key={name} value={name}>
                     {name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <select
+                value={item.carYear || ""}
+                onChange={(e) => handleCarYearChange(item.id, e.target.value)}
+                disabled={!item.carMake}
+                aria-label="Select Car Year"
+              >
+                <option value="">Select Car Year</option>
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
                   </option>
                 ))}
               </select>
@@ -79,6 +155,7 @@ export default function CartList({ item, onCarMakeChange, onCarNameChange }) {
             <button
               onClick={() => removeFromCart(item.id)}
               className="remove-button"
+              aria-label="Remove Item"
             >
               <Trash2 /> Remove
             </button>
@@ -88,10 +165,14 @@ export default function CartList({ item, onCarMakeChange, onCarNameChange }) {
                 type="number"
                 value={item.quantity}
                 onChange={(e) =>
-                  updateItemQuantity(item.id, parseInt(e.target.value, 10))
+                  updateItemQuantity(
+                    item.id,
+                    Math.max(1, parseInt(e.target.value, 10))
+                  )
                 }
                 min="1"
                 className="quantity-input"
+                aria-label="Quantity"
               />
               <button onClick={handleIncreaseQuantity}>+</button>
             </div>
