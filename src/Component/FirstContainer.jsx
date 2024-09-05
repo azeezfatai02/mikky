@@ -8,6 +8,7 @@ export default function FirstContainer() {
           <h5>Welcome to</h5>
           <h1>MIKKY NIG ENTERPRISE</h1>
           <h3>Dealer in all kinds of motor spare part</h3>
+          <button className="cta-button">Shop Now</button>
         </div>
       </div>
     </div>
