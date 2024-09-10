@@ -67,7 +67,7 @@ export const ALLPRODUCTS = [
   },
   {
     id: 2,
-    image: "/Cartyres.png",
+    image: "/tyreeee.png",
     title: "tyreeee",
     price: "200000",
     alt: "a product image",
@@ -157,7 +157,7 @@ export const ALLPRODUCTS = [
   },
   {
     id: 12,
-    image: "/Cartyres.png",
+    image: "/tyreeee.png",
     title: "tyreeee",
     price: "200000",
     alt: "a product image",
